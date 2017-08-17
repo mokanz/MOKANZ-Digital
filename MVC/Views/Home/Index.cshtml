@@ -1,23 +1,18 @@
 ﻿@model IEnumerable<MOKANZ.Models.ProductModel>
 
 <h3>Best selling products</h3>
-<table>
-
-    @foreach (var product in Model)
-    {
-        <tr>
-            <td>
-                @*@{
-                    var base64 = Convert.ToBase64String(product.Image);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                }
-                <img src="@imgSrc" />*@
-                <img src="@product.SImage" />
-            </td>
-            <td>@Html.ActionLink(@product.ProductName, "Details", "Products", new { id = product.ProductID }, null)</td>
-            <td>@product.Price</td>
-            
-        </tr>
-    }
-
-</table>
+<div class="slider">
+    
+        @foreach (var product in Model)
+        {
+            <div>
+                <span>
+                    <span>
+                        <img src="@product.SImage" />
+                    </span>
+                    <span>@Html.ActionLink(@product.ProductName, "Details", "Products", new { id = product.ProductID }, null)</span>
+                    <span>@product.Price</span>
+                </span>
+            </div>
+        }
+</div>
