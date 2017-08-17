@@ -1,0 +1,60 @@
+﻿@model MOKANZ.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+
+
+<h3>CheckOut Page</h3>
+@using (Html.BeginForm())
+{ 
+
+@Html.HiddenFor(model => Model.OrderID);
+
+<table class="table">
+
+        <tr style="background-color:navajowhite">
+            <th>
+                Product
+            </th>
+            
+            <th>
+                Quantity
+            </th>
+        </tr>
+        
+    @foreach (var itemdetail in Model.OrderDetails)
+    {
+        @Html.HiddenFor(detail => itemdetail.DetailID)
+        <tr>
+            <td>
+                @Html.DisplayFor(detail => itemdetail.Product)
+            </td>
+            <td>
+                @Html.DisplayFor(detail => itemdetail.Quantity)
+            </td>
+            <td></td>
+        </tr>
+        }
+</table>
+
+
+<div style="float:right"> <h2>Subtotal: @Model.SubTotal</h2></div>
+
+<h4>Your shipping address:</h4>
+<p>
+    @ViewBag.address.Street <br/>
+    @ViewBag.address.Suburb <br />
+    @ViewBag.address.City @ViewBag.address.PostalCode <br />
+    @ViewBag.address.Country <br />
+</p> 
+<div></div>
+<div style="float:right">
+
+    <input type="submit" value="BUY"  />
+
+
+</div>
+
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="60b533987f3a45fab860eacce08c90bc" Name="Diagram1">
+        <EntityTypeShape EntityType="EFModel.Address" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.AddressType" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Contact" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.ContactType" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Customer" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Employee" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Invoiced" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Order" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.OrderDetail" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Product" Width="1.5" PointX="13.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.ProductCategory" Width="1.5" PointX="11.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Retailer" Width="1.5" PointX="11.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Role" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.Shipper" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.ShipperOption" Width="1.5" PointX="10.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.ShippingLocation" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.ShippingMethod" Width="1.5" PointX="8.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EFModel.sysdiagram" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="EFModel.FK_Address_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Order_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Contact_ContactType" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Invoiced_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_OrderDetail_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Invoiced_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Invoiced_ShipperOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_Product_Retailer" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_ShipperOptions_Shipper" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_ShipperOptions_ShippingLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.FK_ShipperOptions_ShippingMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.CustomerAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.CustomerContact" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.EmployeeAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.EmployeeContact" ManuallyRouted="false" />
+        <AssociationConnector Association="EFModel.EmployeeRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

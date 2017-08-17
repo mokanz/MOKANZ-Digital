@@ -1,0 +1,94 @@
+﻿@model MOKANZ.Models.ProductModel
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/cart.js"></script>
+
+<h2 id="productname">@Html.DisplayFor(model => model.ProductName)</h2>
+<div id="bar-notification">
+</div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <dd>
+            @Html.HiddenFor(model => model.ProductID)
+        </dd>
+        <dd>
+            <img src="@Model.SImage" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+           @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            NZ @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Retailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Retailer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+@if (Request.IsAuthenticated)
+{
+  using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "quantityform" }))
+  {
+<div>
+    <div style="display:none" id="customerid">@Session["CustomerID"].ToString()</div>
+        @Html.DisplayNameFor(model => model.Quantity)
+        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1" } })
+        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Add to cart" onsubmit="Add()" class="btn btn-default" />
+    </div>
+</div>
+
+  }
+}
+
+
+<p>
+    @Html.ActionLink("Back to Products Catalogue", "Index") 
+</p>
+
+<div id="response"></div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

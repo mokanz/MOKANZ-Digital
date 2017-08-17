@@ -1,0 +1,115 @@
+﻿@model IEnumerable<DigitalX.Models.OrderDetailModel>
+
+<p>
+@{ViewBag.Title = "Shopping Cart"; }
+</p>
+
+<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/cart.js"></script>
+<div id="bar-notification">
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DetailID)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Packaged)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@item.SImage" />
+        </td>
+        <td id="productname">
+            @Html.DisplayFor(modelItem => item.Product)
+        </td>
+        <td>
+            @Html.EditorFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DetailID)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Packaged)
+        </td>*@
+        <th>
+            @Html.DisplayFor(modelItem => item.Price)
+        </th>
+        <td id="total">
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        @*<td>
+            @Ajax.ActionLink("Delete", "DeleteItem", "CartAPI",
+                new { id = item.DetailID},
+                new AjaxOptions { HttpMethod = "GET", OnSuccess = "success(this)" }
+            )
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+        <td>
+            <input type="button" id="@item.DetailID" onclick="deleteitem(this)" value="Delete item" />
+        </td>
+        @*<td>
+            @*<a href="#" class="RemoveLink"  data-id="@item.OrderID">Remove from cart</a>
+        </td>*@
+    </tr>
+}
+
+</table>
+
+<div id="subtotal">
+    Subtotal: @ViewBag.subtotal
+</div>
+
+
+
+<script>
+    
+    //function deleteitem(data) {
+    //    //$(data).parent().parent().css('border', '2px solid red');
+    //    var id = $(data).attr('id');
+    //    //alert(id);
+    //    $.ajax({
+    //        url: 'http://localhost:20632/api/cartapi/deleteitem/' + id,
+    //        type: 'GET',
+    //        error: function (jqXHR, textStatus, errorThrown) {
+    //            alert(errorThrown.Message);
+    //        },
+    //        success: function (response) {
+    //            $('#bar-notification').show().html(response + " removed from cart.").delay(3000).fadeOut(1000);
+    //            $(data).parent().parent().hide('slow')
+    //        }
+    //    });
+    //}
+
+</script>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MOKANZ.Models.OrderViewModel>
+
+<p>
+    @{ViewBag.Title = "My Orders"; }
+</p>
+<h2>My Orders</h2>
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBackOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:coral">
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBackOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+        </tr>
+        @*<tr><td> </td><td>Product</td><td>Quantity</td><td></td></tr>*@
+        foreach (var itemdetail in item.OrderDetails)
+        {
+            <tr>
+                <td>
+                    <img src="@itemdetail.SImage"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(detail => itemdetail.Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(detail => itemdetail.Quantity)
+                </td>
+                <td></td>
+            </tr>
+        }
+    }
+
+</table>
+
