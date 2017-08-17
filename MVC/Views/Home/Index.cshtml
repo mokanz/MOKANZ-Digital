@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<MOKANZ.Models.ProductModel>
 
-<h3>Best selling products</h3>
-<div class="slider">
-    
+<div class="body-content">
+    <h3>Best selling products</h3>
+    <div class="slider">
+
         @foreach (var product in Model)
         {
             <div>
@@ -15,4 +16,5 @@
                 </span>
             </div>
         }
+    </div>
 </div>
