@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<MOKANZ.Models.ProductModel>
 
-<div class="body-content">
     <h3>Best selling products</h3>
     <div class="slider">
 
@@ -8,13 +7,10 @@
         {
             <div>
                 <span>
-                    <span>
-                        <img src="@product.SImage" />
-                    </span>
-                    <span>@Html.ActionLink(@product.ProductName, "Details", "Products", new { id = product.ProductID }, null)</span>
-                    <span>@product.Price</span>
+                    <span><img src="@product.SImage" /></span>
+                    <span class="text">@Html.ActionLink(@product.ProductName, "Details", "Products", new { id = product.ProductID }, null)</span>
+                    <span class="text">@product.Price</span>
                 </span>
             </div>
         }
     </div>
-</div>
