@@ -5,6 +5,11 @@
 
 }
 
+a {
+color:whitesmoke;
+}
+
+
 
 
 /* Set padding to keep content from hitting the edges */
@@ -14,6 +19,7 @@
     margin: auto;
     padding: 20px;
     width: 600px;
+    color:whitesmoke;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -23,10 +29,12 @@ textarea {
     max-width: 280px;
 }
 
+/*CAROUSEL*/
+
 .a-button {
     position:absolute;
     top: 50%;
-    background: #e7e9ec;
+    background: #ffffff;
     border-radius: 3px;
     border-color: #ADB1B8 #A2A6AC #8D9096;
     border-style: solid;
@@ -51,9 +59,22 @@ textarea {
     left: -37px;
 }
 
-a, h3, .text {
+/***********/
+
+
+/*PRODUCT DETAILS*/
+
+.details-wrapper{
+    display:flex;
+}
+
+.prod-img {
+}
+
+.prod-details {
 color:whitesmoke;
 }
+
 
   
 div#bar-notification {
@@ -69,3 +90,5 @@ div#bar-notification {
     z-index: 1000;
     background-color: green;
 }
+
+/**************/

@@ -1,16 +1,39 @@
 ﻿@model IEnumerable<MOKANZ.Models.ProductModel>
 
+@{
+    ViewBag.Title = "MOKANZ Digital Store";
+}
+
+<html>
+<head>
+
+</head>
+<body>
     <h3>Best selling products</h3>
     <div class="slider">
-
         @foreach (var product in Model)
         {
             <div>
                 <span>
                     <span><img src="@product.SImage" /></span>
                     <span class="text">@Html.ActionLink(@product.ProductName, "Details", "Products", new { id = product.ProductID }, null)</span>
-                    <span class="text">@product.Price</span>
                 </span>
             </div>
         }
     </div>
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                dots: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                centerMode: true,
+                prevArrow: "<a class='a-button a-button-prev'><</a>",
+                nextArrow: "<a class='a-button a-button-next'>></a>"
+        });
+        });
+    </script>
+</body>
+</html>
