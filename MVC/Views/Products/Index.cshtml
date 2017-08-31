@@ -1,27 +1,26 @@
 ﻿@model IEnumerable<MOKANZ.Models.ProductModel>
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "Products - MOKANZ Digital Store";
 }
-<script src="~/Scripts/jquery-2.1.4.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+@*<script src="~/Scripts/jquery-2.1.4.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
 <script src="~/Scripts/cart.js"></script>
 
 <h2>Products</h2>
-<h5>select category from dropdown to filter results</h5>
-@Html.DropDownList("ddcategory", null, "-- Select --", htmlAttributes: new { @class = "form-control", @onchange = "filter(this)" })
+@Html.DropDownList("ddcategory", null, "Select category:", htmlAttributes: new { @class = "form-control", @onchange = "filter(this)" })
 <div id="details"></div>
 <table class="table" id="tbproducts">
     <tbody>
         <tr>
             <th>
-                @*Picture*@
+            
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.ProductName)*@
+            
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Price)*@
+            
             </th>
 
             <th></th>
@@ -38,48 +37,7 @@
                 <td>
                     NZD @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                @*<td>
-                    @Html.ActionLink("Add to cart", "Index", new { /* id=item.PrimaryKey */ })
-                </td>*@
             </tr>
                         }
     </tbody>
 </table>
-
-@*<script>
-
-    //function filter(data) {
-
-    //    var id = data.value;
-    //    var url = 'http://localhost:20632/api/productsapi/getproducts/' + id;
-    //    var detailurl = 'http://localhost:20632/Products/Details/';
-        
-    //    var content = '';
-    //    $.getJSON(url, function (response) {
-    //        if (response.length == 0)
-    //        {
-    //            content += '<tr"><td style="color:red">There are currently no products in this category</td></tr>';
-    //        }
-
-
-    //        else {
-    //            $.each(response, function (i, value) {
-    //                content += '<tr><td> ';
-    //                content += '<img src=';
-    //                content += value.SImage;
-    //                content += '/>';
-    //                content += ' </td><td><a href= ';
-    //                content += detailurl;
-    //                content += value.ProductID;
-    //                content += '>';
-    //                content += value.ProductName;
-    //                content += '</a></td><td> ';
-    //                content += value.Price;
-    //                content += ' </td>';
-    //                content += ' </tr>';
-    //            });
-    //        }
-    //        $('#tbproducts tbody').empty().html(content);
-    //    });
-    //}
-</script>*@

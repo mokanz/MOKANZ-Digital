@@ -19,6 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                @*@Html.MvcSiteMap().Menu()*@
                 @Html.ActionLink("MOKANZ Digital Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -30,12 +31,14 @@
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MOKANZ Application</p>
-        </footer>
-    </div>
+        @*<span style="color:orangered">@Html.MvcSiteMap().Menu()</span>*@
+        <span style="color:orangered">@Html.MvcSiteMap().SiteMapPath()</span>
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - MOKANZ Application</p>
+            </footer>
+</div>
     @RenderSection("scripts", required: false)
 </body>
 </html>

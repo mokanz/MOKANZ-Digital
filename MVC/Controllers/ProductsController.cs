@@ -1,13 +1,8 @@
 ﻿using MOKANZ.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using MOKANZ.Repositories;
+using MvcSiteMapProvider;
 
 namespace MOKANZ.Controllers
 {
@@ -31,14 +26,14 @@ namespace MOKANZ.Controllers
             return View(result);
         }
 
-        // GET: Products/Details/5
+        // GET: Products/Details/x
+        [MvcSiteMapNode(Title = "Details (Code)", ParentKey = "Products", Key = "Details2")]
         [HttpGet]
+        [MvcSiteMapNodeAttribute(Title = "Details", ParentKey = "Products", DynamicNodeProvider = "MOKANZ.Code.DetailsDynamicNodeProvider, MOKANZ")]
         public async Task<ActionResult> Details(int id)
         {
-            //if (!string.IsNullOrEmpty(Session["CustomerID"] as string))
-            //{
-            //    ViewBag.cusId = Session["CustomerID"].ToString();
-            //}
+
+            ViewBag.id = id;
 
             var result = await repository.GetProduct(id);
             return View(result);

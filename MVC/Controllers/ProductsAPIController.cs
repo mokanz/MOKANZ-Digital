@@ -1,4 +1,5 @@
 ﻿using MOKANZ.Models;
+using MvcSiteMapProvider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,20 @@ namespace MOKANZ.Controllers
                 }
                 );
             return categories;
+        }
+
+        [HttpGet]
+        public IEnumerable<DynamicNode> breadcrumbNodes() {
+            // Create a node for each product
+            foreach (var product in db.Products.Include("ProductCategory") )
+            {
+                DynamicNode dynamicNode = new DynamicNode();
+                dynamicNode.Title = product.ProductName;
+                dynamicNode.ParentKey = "Cat_" + product.ProductCategory.Category;
+                dynamicNode.RouteValues.Add("id", product.ProductID);
+
+                yield return dynamicNode;
+            }
         }
 
 

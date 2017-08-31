@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web;
 using MOKANZ.Models;
 using System.Threading.Tasks;
+using MvcSiteMapProvider;
 
 namespace MOKANZ.Repositories
 {
@@ -39,5 +40,11 @@ namespace MOKANZ.Repositories
             return reply.Content.ReadAsAsync<ProductModel>().Result;
         }
 
+        public async Task<DynamicNode> GetBreadcrumbNodes()
+        {
+
+            HttpResponseMessage reply = await apiclient.GetAsync(APIUri.ProductsAPI + "breadcrumbnodes");
+            return reply.Content.ReadAsAsync<DynamicNode>().Result;
+        }
     }
 }
