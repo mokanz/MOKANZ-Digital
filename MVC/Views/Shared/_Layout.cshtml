@@ -31,12 +31,11 @@
         </div>
     </div>
     <div class="container body-content">
-        @*<span style="color:orangered">@Html.MvcSiteMap().Menu()</span>*@
-        <span style="color:orangered">@Html.MvcSiteMap().SiteMapPath()</span>
+        @Html.MvcSiteMap().SiteMapPath()
             @RenderBody()
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - MOKANZ Application</p>
+                <p>&copy; @DateTime.Now.Year - MOKANZ Applications</p>
             </footer>
 </div>
     @RenderSection("scripts", required: false)
