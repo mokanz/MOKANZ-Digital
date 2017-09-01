@@ -97,30 +97,15 @@ namespace MOKANZ.Controllers
         [HttpGet]
         public IEnumerable<DynamicNode> GetbreadcrumbNodes()
         {
-
-
-            //var nodes = db.Products.Select(
-            //    a => new DynamicNode()
-            //    {
-            //        Title = a.ProductCategory.Category,
-            //        ParentKey = "Products",
-            //        RouteValues
-            //    });
-
-            //return nodes;
-            List<DynamicNode> nodes = new List<DynamicNode>();
+            
             foreach (var product in db.Products)
             {
                 DynamicNode dynamicNode = new DynamicNode();
                 dynamicNode.Title = product.ProductCategory.Category; 
-                dynamicNode.ParentKey = "Products"; 
                 dynamicNode.RouteValues.Add("id", product.ProductID);
 
-                nodes.Add(dynamicNode);
-                
+                yield return dynamicNode;   
             }
-
-            return nodes.AsEnumerable();
 
         }
         
