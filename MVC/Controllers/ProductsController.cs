@@ -29,7 +29,7 @@ namespace MOKANZ.Controllers
         // GET: Products/Details/x
         [MvcSiteMapNode(Title = "Details (Code)", ParentKey = "Products", Key = "Details2")]
         [HttpGet]
-        [MvcSiteMapNodeAttribute(Title = "Details", ParentKey = "Products", DynamicNodeProvider = "MOKANZ.Code.DetailsDynamicNodeProvider, MOKANZ")]
+        [MvcSiteMapNodeAttribute(Title = "Details", ParentKey = "Products", DynamicNodeProvider = "MOKANZ.Code.CategoryDynamicNodeProvider, MOKANZ")]
         public async Task<ActionResult> Details(int id)
         {
 

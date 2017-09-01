@@ -40,11 +40,11 @@ namespace MOKANZ.Repositories
             return reply.Content.ReadAsAsync<ProductModel>().Result;
         }
 
-        public async Task<DynamicNode> GetBreadcrumbNodes()
-        {
 
-            HttpResponseMessage reply = await apiclient.GetAsync(APIUri.ProductsAPI + "breadcrumbnodes");
-            return reply.Content.ReadAsAsync<DynamicNode>().Result;
+        public async Task<IEnumerable<DynamicNode>> GetBreadcrumbNodes()
+        {
+            HttpResponseMessage reply = apiclient.GetAsync(APIUri.ProductsAPI + "getbreadcrumbnodes").GetAwaiter().GetResult();
+            return reply.Content.ReadAsAsync<IEnumerable<DynamicNode>>().GetAwaiter().GetResult();
         }
     }
 }

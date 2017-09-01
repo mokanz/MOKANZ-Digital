@@ -21,10 +21,11 @@ namespace MOKANZ.Controllers
         {
 
             var products = db.Products.ToList()
-                .Select(a => new ProductModel {
+                .Select(a => new ProductModel
+                {
                     ProductName = a.ProductName,
                     ProductID = a.ProductID,
-                    Image = a.Picture, 
+                    Image = a.Picture,
                     UnitsInStock = a.UnitsInStock,
                     Price = a.Price.ToString("C")
                 });
@@ -42,12 +43,13 @@ namespace MOKANZ.Controllers
                 return NotFound();
             }
 
-            return Ok(new ProductModel {
+            return Ok(new ProductModel
+            {
                 ProductName = a.ProductName,
                 ProductDescription = a.ProductDescription,
                 ProductID = a.ProductID,
                 Retailer = a.Retailer.Retailer1,
-                Image = a.Picture, 
+                Image = a.Picture,
                 UnitsInStock = a.UnitsInStock,
                 Quantity = 1,
                 Category = a.ProductCategory.Category,
@@ -66,7 +68,7 @@ namespace MOKANZ.Controllers
                 {
                     ProductName = a.ProductName,
                     ProductID = a.ProductID,
-                    Image = a.Picture, 
+                    Image = a.Picture,
                     UnitsInStock = a.UnitsInStock,
                     Price = a.Price.ToString("C")
                 });
@@ -93,19 +95,34 @@ namespace MOKANZ.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<DynamicNode> breadcrumbNodes() {
-            // Create a node for each product
-            foreach (var product in db.Products.Include("ProductCategory") )
+        public IEnumerable<DynamicNode> GetbreadcrumbNodes()
+        {
+
+
+            //var nodes = db.Products.Select(
+            //    a => new DynamicNode()
+            //    {
+            //        Title = a.ProductCategory.Category,
+            //        ParentKey = "Products",
+            //        RouteValues
+            //    });
+
+            //return nodes;
+            List<DynamicNode> nodes = new List<DynamicNode>();
+            foreach (var product in db.Products)
             {
                 DynamicNode dynamicNode = new DynamicNode();
-                dynamicNode.Title = product.ProductName;
-                dynamicNode.ParentKey = "Cat_" + product.ProductCategory.Category;
+                dynamicNode.Title = product.ProductCategory.Category; 
+                dynamicNode.ParentKey = "Products"; 
                 dynamicNode.RouteValues.Add("id", product.ProductID);
 
-                yield return dynamicNode;
+                nodes.Add(dynamicNode);
+                
             }
+
+            return nodes.AsEnumerable();
+
         }
-
-
+        
     }
 }
