@@ -66,13 +66,47 @@ textarea {
 
 .details-wrapper{
     display:flex;
+    flex-flow:row wrap;
 }
+
+br{
+  flex-basis: 100%;
+  width: 0px; 
+  height: 0px; 
+  overflow: hidden;
+}
+
 
 .prod-img {
 }
 
 .prod-details {
 color:whitesmoke;
+}
+
+.prod-addtocart{
+    left: 218px;
+    flex-basis: 44%;
+    position: relative;
+    width: 50%;
+}
+
+.qty-input input { /*quantity input box*/
+border: 1px solid #DDD;
+border-radius: 4px 4px 4px 4px;
+padding: 2px 6px 6px 6px;
+margin-left:15px;
+width: 35px;
+}
+
+.qty-label {
+font-weight:bold;
+}
+
+#qty-btn-add {
+    width:175px;
+    margin-left:20px;
+    margin-top:5px;
 }
 
 

@@ -50,35 +50,32 @@
             <dd>
                 @Html.DisplayFor(model => model.UnitsInStock)
             </dd>
-
-            @*<dt>
-                @Html.DisplayNameFor(model => model.Category)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Category)
-            </dd>*@
         </dl>
     </div>
-
-    @if (Request.IsAuthenticated)
-    {
-        using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "quantityform" }))
-        {
-            <div>
-                <div style="display:none" id="customerid">@Session["CustomerID"].ToString()</div>
-                @Html.DisplayNameFor(model => model.Quantity)
-                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1" } })
-                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Add to cart" onsubmit="Add()" class="btn btn-default" />
-                </div>
-            </div>
-
-        }
-    }
+    <br />
+    <div class="prod-addtocart">
+        
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm(null, null, FormMethod.Post, new { @id = "quantityform" }))
+                {
+                    <span style="display:none" id="customerid">
+                        @Session["CustomerID"].ToString()
+                    </span>
+                    <span class="qty-label">@Html.DisplayNameFor(model => model.Quantity) </span>
+                    <span class="qty-input">
+                        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1", @required = "true" } })
+                    </span>
+                    @*<span>
+                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                    </span>*@
+                        <span class="col-md-offset-2 col-md-10">
+                            <input id="qty-btn-add" type="submit" value="Add to cart" onsubmit="Add()" class="btn btn-default" />
+                        </span>
+                }
+            }
+    </div>
 </div>
-
 
 <div id="response"></div>
 

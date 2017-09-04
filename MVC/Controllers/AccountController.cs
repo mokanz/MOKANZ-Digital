@@ -43,7 +43,7 @@ namespace MOKANZ.Controllers
             try
             {
                 ViewBag.error = "";
-                int result = await repository.Login(model.UserName, model.Password); //true;// await client.LoginAsync(model.UserName, model.Password);
+                int result = 5;// await repository.Login(model.UserName, model.Password); //true;// await client.LoginAsync(model.UserName, model.Password);
                 if (result > 0)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
