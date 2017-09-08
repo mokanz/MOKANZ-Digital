@@ -9,7 +9,13 @@ a {
 color:whitesmoke;
 }
 
-
+/*quantity input box*/
+.qty-input { 
+border: 1px solid #DDD;
+border-radius: 4px 4px 4px 4px;
+padding: 2px 6px 6px 6px;
+width: 35px;
+}
 
 
 /* Set padding to keep content from hitting the edges */
@@ -91,12 +97,8 @@ color:whitesmoke;
     width: 50%;
 }
 
-.qty-input input { /*quantity input box*/
-border: 1px solid #DDD;
-border-radius: 4px 4px 4px 4px;
-padding: 2px 6px 6px 6px;
+#quantityform .qty-input { 
 margin-left:15px;
-width: 35px;
 }
 
 .qty-label {
@@ -126,3 +128,12 @@ div#bar-notification {
 }
 
 /**************/
+
+
+/*CART*/
+.btn-delete:hover{
+    color:red;
+}
+.btn-update:hover {
+    color:limegreen;
+}

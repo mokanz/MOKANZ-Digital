@@ -63,9 +63,9 @@
                         @Session["CustomerID"].ToString()
                     </span>
                     <span class="qty-label">@Html.DisplayNameFor(model => model.Quantity) </span>
-                    <span class="qty-input">
-                        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1", @required = "true" } })
-                    </span>
+                    
+                        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1", @required = "true", @class="qty-input" } })
+                    
                     @*<span>
                         @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
                     </span>*@

@@ -1,65 +1,31 @@
 ﻿@model MOKANZ.Models.OrderViewModel
 
 <p>
-    @{ViewBag.Title = "Shopping Cart"; }
+    @{ViewBag.Title = "Shopping Cart - MOKANZ Digital Store"; }
 </p>
 
-<script src="~/Scripts/jquery-2.1.4.js"></script>
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <script src="~/Scripts/cart.js"></script>
 <div id="bar-notification">
 </div>
 
-
-
 <div id="subtotal" style="float:right">
-    @*<h3>@ViewBag.SubTotal</h3>*@
-
-    <h3> Subtotal: @Model.SubTotal</h3>
+    <h3> Subtotal (@Model.OrderDetails.Count() items): @Model.SubTotal</h3>
 </div>
-
 
 <table class="table">
     <tr>
+        <th></th>
+        <th></th>
         <th>
-            
+            Quantity
         </th>
-     <th>
-         Product
-        @*@Html.DisplayNameFor(model => model.Product)*@
-    </th>
-    <th>
-        Quantity
-        @*@Html.DisplayNameFor(model => model.Quantity)*@
-    </th>
-    @*<th>
-        OrderID
-        
-    </th>
-    <th>
-        DetailID
-        
-    </th>*@
-    @*<th>
-            @Html.DisplayNameFor(model => model.Packaged)
-        </th>*@
         <th>
             Price
-            @*@Html.DisplayNameFor(model => model.Price)*@
         </th>
-        @*<th>
-            Total
-          
-    </th>*@
-   
-
     @foreach (var item in Model.OrderDetails)
     {
         @Html.HiddenFor(modelItem => item.OrderID)
-            
         @Html.HiddenFor(modelItem => item.DetailID)
-        
-
         <tr>
             <td>
                 <img src="@item.SImage" />
@@ -68,32 +34,18 @@
                 @Html.DisplayFor(modelItem => item.Product)
             </td>
             <td>
-                @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @id = item.DetailID} })
+                @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @id = item.DetailID, @class = "qty-input" } })
                 @Html.ValidationMessageFor(model => item.Quantity, "", new { @class = "text-danger" })
-
-
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.OrderID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DetailID)
-            </td>*@
-            
             <th>
                 @Html.DisplayFor(modelItem => item.Price)
             </th>
-            @*<td id="total">
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>*@
-            
             <td>
-                <input type="button" id="@item.DetailID" onclick="deleteitem(this)" value="Delete item" />
+                <input title="Update Cart" type="button" onclick="updateitem(@item.DetailID)" value=&#10004; class="btn btn-default btn-update" />
             </td>
             <td>
-                <input type="button"  onclick="updateitem(@item.DetailID)" value="Update" />
+                <input title="Delete item" type="button" id="@item.DetailID" onclick="deleteitem(this)" value=&#10006 class="btn btn-default btn-delete" />
             </td>
-            
         </tr>
     }
 
