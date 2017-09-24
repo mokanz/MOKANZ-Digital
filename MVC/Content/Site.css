@@ -127,6 +127,16 @@ div#bar-notification {
     background-color: green;
 }
 
+
+.instock{
+
+    color:chartreuse;
+}
+.outofstock{
+
+    color:orangered;
+}
+
 /**************/
 
 
@@ -152,3 +162,5 @@ background-color:darkgrey;
 background-color:lightgreen;
 
 }
+
+/**************/

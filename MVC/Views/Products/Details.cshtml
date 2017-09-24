@@ -44,12 +44,12 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.UnitsInStock)
+                @if (@Model.UnitsInStock > 0)
+                { <span class="instock">In stock</span> }
+                else
+                {<span class="outofstock">Out of stock</span>}
             </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.UnitsInStock)
-            </dd>
+            <dd></dd>
         </dl>
     </div>
     <br />
@@ -65,10 +65,7 @@
                     <span class="qty-label">@Html.DisplayNameFor(model => model.Quantity) </span>
                     
                         @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @min = "1", @required = "true", @class="qty-input" } })
-                    
-                    @*<span>
-                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
-                    </span>*@
+
                         <span class="col-md-offset-2 col-md-10">
                             <input id="qty-btn-add" type="submit" value="Add to cart" onsubmit="Add()" class="btn btn-default" />
                         </span>
