@@ -130,7 +130,7 @@ namespace MOKANZ.Controllers
                     OrderID = a.OrderID,
                     Complete = a.Complete ? "Yes": "No",
                     IsBackOrder = a.IsBackOrder ? "Yes" : "No",
-                    OrderDate = a.OrderDate.ToLongDateString()
+                    OrderDate = a.OrderDate
                 });
 
             return orders;

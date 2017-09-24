@@ -1,11 +1,41 @@
 ﻿$(window).ready(function ()
 {
+    //my orders
+    $("tr.orders").each(function () {
+        var $cmpl = $(this).find("#complete").text();
+        if ($cmpl.trim() == 'No')
+        {
+            $(this).removeClass('orders').addClass('orders-open');
+        }
+    });
+
+
+    //order subtotal 
+    var subtotal = 0;
+    $("tr.sum").each(function () {
+        var $qnt = $(this).find("td").eq(2).text();
+        if ($(this).find("td").eq(2).children('input').length) { //because in shopping cart page qty an is input box
+            $qnt = $(this).find("td").eq(2).children('input').val();
+        }
+        var $currency = $(this).find("td").eq(3);
+        var $price = Number($currency.text().replace(/[^0-9\.-]+/g,"")); //to remove the $ sign 
+        var sum = $price * parseFloat($qnt);
+        subtotal += sum;
+    });
+    $("#total").text(subtotal.toFixed(2));
+
+    $("#item-count").text($("tr.sum").size());
+    
+    //add to cart
     $('#quantityform').submit(function (event) {
         $('#quantityform').removeAttr('novalidate');
         var isValid = $('#quantityform').validate();
         if (isValid.errorList.length < 1) { Add() };
         return false;
     });
+
+
+
 });
 
 

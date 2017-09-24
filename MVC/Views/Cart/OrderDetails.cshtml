@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MOKANZ.Models.OrderItemModel>
+
+@{
+    ViewBag.Title = "Order Details - MOKANZ Digital Store";
+}
+<script src="~/Scripts/cart.js"></script>
+<h2>Order Details</h2>
+
+<div id="subtotal" style="float:right">
+    <h3> Subtotal: $<span id="total"></span></h3>
+</div>
+<div>
+    <table class="table" id="tbproducts">
+        <tbody>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    
+                </th>
+                <th>
+                    Quantity
+                </th>
+
+                <th>Unit Price</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr class="sum">
+                    <td>
+                        <img src="@item.SImage" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => @item.Product)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => @item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>  
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to My Orders", "MyOrders")
+</p>

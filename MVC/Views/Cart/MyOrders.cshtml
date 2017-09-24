@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<MOKANZ.Models.OrderViewModel>
 
-<p>
-    @{ViewBag.Title = "My Orders"; }
-</p>
+    @{
+        ViewBag.Title = "My Orders - MOKANZ Digital Store"; 
+     }
 <h2>My Orders</h2>
+<script src="~/Scripts/cart.js"></script>
 <p>
 
 </p>
@@ -18,30 +19,32 @@
         <th>
             @Html.DisplayNameFor(model => model.IsBackOrder)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.SubTotal)
         </th>
-        <th></th>
+        <th></th>*@
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr style="background-color:coral">
+        <tr class="orders">
             <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
+                @*@Html.DisplayFor(modelItem => item.OrderDate)*@
+                &#9654; @Html.ActionLink(@item.OrderDate.ToLongDateString(), "OrderDetails", new { id = item.OrderID })
             </td>
-            <td>
+            <td id="complete">
                 @Html.DisplayFor(modelItem => item.Complete)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsBackOrder)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.SubTotal)
-            </td>
+                
+            </td>*@
         </tr>
-        @*<tr><td> </td><td>Product</td><td>Quantity</td><td></td></tr>*@
-        foreach (var itemdetail in item.OrderDetails)
+
+        @*foreach (var itemdetail in item.OrderDetails)
         {
             <tr>
                 <td>
@@ -55,7 +58,7 @@
                 </td>
                 <td></td>
             </tr>
-        }
+        }*@
     }
 
 </table>

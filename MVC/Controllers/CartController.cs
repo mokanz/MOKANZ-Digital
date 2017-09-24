@@ -26,14 +26,25 @@ namespace MOKANZ.Controllers
             foreach (OrderViewModel order in orders)
             {
                 order.OrderDetails = await repository.GetOrderItems(order.OrderID);
-                order.SubTotal = order.OrderDetails.Sum(v => double.Parse(v.Total, NumberStyles.Currency))
-                .ToString("C"); 
+                //order.SubTotal = order.OrderDetails.Sum(v => double.Parse(v.Total, NumberStyles.Currency))
+                //.ToString("C"); 
             }
 
-            return View(orders.OrderByDescending(d=> d.OrderDate));
+            return View(orders.OrderByDescending(a => a.OrderDate.Date));
         }
 
-        
+
+        [HttpGet]
+        public async Task<ActionResult> OrderDetails(int id) //list of products in one order
+        {
+
+            //ViewBag.id = id;
+
+            var result = await repository.GetOrderItems(id);
+            return View(result);
+        }
+
+
         public async Task<ActionResult> Cart()
         {
 
@@ -46,8 +57,8 @@ namespace MOKANZ.Controllers
             }
             
 
-            cart.SubTotal = cart.OrderDetails.Sum(v => double.Parse(v.Total, NumberStyles.Currency))
-                .ToString("C");
+            //cart.SubTotal = cart.OrderDetails.Sum(v => double.Parse(v.Total, NumberStyles.Currency))
+            //    .ToString("C");
             return View(cart);
 
         }

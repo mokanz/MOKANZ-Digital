@@ -137,3 +137,18 @@ div#bar-notification {
 .btn-update:hover {
     color:limegreen;
 }
+
+/**************/
+
+
+/*MY ORDERS*/
+
+.orders {
+background-color:darkgrey;
+
+}
+
+.orders-open {
+background-color:lightgreen;
+
+}

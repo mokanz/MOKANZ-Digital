@@ -1,15 +1,14 @@
 ﻿@model MOKANZ.Models.OrderViewModel
 
-<p>
-    @{ViewBag.Title = "Shopping Cart - MOKANZ Digital Store"; }
-</p>
-
+@{
+    ViewBag.Title = "Shopping Cart - MOKANZ Digital Store";
+}
 <script src="~/Scripts/cart.js"></script>
-<div id="bar-notification">
-</div>
+<div id="bar-notification"></div>
+<h2>Shopping Cart</h2>
 
 <div id="subtotal" style="float:right">
-    <h3> Subtotal (@Model.OrderDetails.Count() items): @Model.SubTotal</h3>
+    <h3> Subtotal (<span id="item-count"></span> items): $<span id="total"></span></h3>
 </div>
 
 <table class="table">
@@ -22,11 +21,13 @@
         <th>
             Price
         </th>
+        <th></th>
+        <th></th>
     @foreach (var item in Model.OrderDetails)
     {
         @Html.HiddenFor(modelItem => item.OrderID)
         @Html.HiddenFor(modelItem => item.DetailID)
-        <tr>
+        <tr class="sum">
             <td>
                 <img src="@item.SImage" />
             </td>
@@ -37,9 +38,9 @@
                 @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @id = item.DetailID, @class = "qty-input" } })
                 @Html.ValidationMessageFor(model => item.Quantity, "", new { @class = "text-danger" })
             </td>
-            <th>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
-            </th>
+            </td>
             <td>
                 <input title="Update Cart" type="button" onclick="updateitem(@item.DetailID)" value=&#10004; class="btn btn-default btn-update" />
             </td>

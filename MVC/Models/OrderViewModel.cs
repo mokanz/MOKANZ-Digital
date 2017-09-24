@@ -11,7 +11,7 @@ namespace MOKANZ.Models
         public int OrderID { get; set; }
 
         [DisplayName("Order Date")]
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         [DisplayName("Order Complete?")]
         public string Complete { get; set; }
